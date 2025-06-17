@@ -9,6 +9,7 @@ import Image from "next/image";
 import Transcript from "./components/Transcript";
 import Events from "./components/Events";
 import BottomToolbar from "./components/BottomToolbar";
+import ShareTargetPickerButton from "../components/ShareTargetPickerButton";
 
 // Types
 import { SessionStatus } from "@/app/types";
@@ -547,6 +548,8 @@ function App() {
         codec={urlCodec}
         onCodecChange={handleCodecChange}
       />
+
+      <ShareTargetPickerButton liffObject={liffObject} />
     </div>
   );
 }
