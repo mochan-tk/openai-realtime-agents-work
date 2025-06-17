@@ -19,6 +19,7 @@ import { useTranscript } from "@/app/contexts/TranscriptContext";
 import { useEvent } from "@/app/contexts/EventContext";
 import { useRealtimeSession } from "./hooks/useRealtimeSession";
 import { createModerationGuardrail } from "@/app/agentConfigs/guardrails";
+import { useLiff } from '../hooks/useLiff';
 
 // Agent configs
 import { allAgentSets, defaultAgentSetKey } from "@/app/agentConfigs";
@@ -431,6 +432,8 @@ function App() {
   }, [sessionStatus]);
 
   const agentSetKey = searchParams.get("agentConfig") || "default";
+
+  const { liff: liffObject, liffError } = useLiff();
 
   return (
     <div className="text-base flex flex-col h-screen bg-gray-100 text-gray-800 relative">
