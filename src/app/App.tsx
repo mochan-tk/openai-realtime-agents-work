@@ -469,7 +469,7 @@ function App() {
             <select
               value={agentSetKey}
               onChange={handleAgentChange}
-              className="appearance-none border border-gray-300 rounded-lg text-base px-2 py-1 pr-8 cursor-pointer font-normal focus:outline-none"
+              className="appearance-none border border-gray-300 rounded-lg textBase px-2 py-1 pr-8 cursor-pointer font-normal focus:outline-none"
             >
               {Object.keys(allAgentSets).map((agentKey) => (
                 <option key={agentKey} value={agentKey}>
@@ -490,9 +490,6 @@ function App() {
 
           {agentSetKey && (
             <div className="flex items-center ml-6">
-              <label className="flex items-center textBase gap-1 mr-2 font-medium">
-                Agent
-              </label>
               <div className="relative inline-block">
                 <select
                   value={selectedAgentName}
