@@ -17,9 +17,9 @@ const ShareTargetPickerButton: React.FC<Props> = ({ liffObject }) => {
         { isMultiple: true }
       );
       if (res) {
-        alert(`[${res.status}] Message sent!`);
+        // alert(`[${res.status}] Message sent!`);
       } else {
-        alert("TargetPicker was closed!");
+        // alert("TargetPicker was closed!");
       }
     } catch {
       alert("something wrong happen");
