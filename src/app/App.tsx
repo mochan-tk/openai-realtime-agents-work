@@ -439,24 +439,29 @@ function App() {
   return (
     <div className="text-base flex flex-col h-screen bg-gray-100 text-gray-800 relative">
       <div className="p-5 text-lg font-semibold flex justify-between items-center">
-        <div
-          className="flex items-center cursor-pointer"
-          onClick={() => window.location.reload()}
-        >
-          <div>
-            <Image
-              src="/openai-logomark.svg"
-              alt="OpenAI Logo"
-              width={20}
-              height={20}
-              className="mr-2"
-            />
-          </div>
-          <div>
-            Realtime API <span className="text-gray-500">Agents</span>
-          </div>
+        <div className="flex items-center gap-4">
+          {/* ヘッダー一番左にLINEシェアボタンを配置 */}
+          <ShareTargetPickerButton liffObject={liffObject} />
         </div>
-        <div className="flex items-center">
+      </div>
+
+      <div className="flex flex-1 gap-2 px-2 overflow-hidden relative">
+        <Transcript
+          userText={userText}
+          setUserText={setUserText}
+          onSendMessage={handleSendTextMessage}
+          downloadRecording={downloadRecording}
+          canSend={
+            sessionStatus === "CONNECTED"
+          }
+        />
+
+        <Events isExpanded={isEventsPaneExpanded} />
+      </div>
+
+      {/* ScenarioとAgentのセレクトボックスを下部に移動 */}
+      <div className="w-full flex flex-col items-center py-2 bg-gray-50 border-t border-gray-200">
+        <div className="flex items-center gap-4">
           <label className="flex items-center text-base gap-1 mr-2 font-medium">
             Scenario
           </label>
@@ -485,14 +490,14 @@ function App() {
 
           {agentSetKey && (
             <div className="flex items-center ml-6">
-              <label className="flex items-center text-base gap-1 mr-2 font-medium">
+              <label className="flex items-center textBase gap-1 mr-2 font-medium">
                 Agent
               </label>
               <div className="relative inline-block">
                 <select
                   value={selectedAgentName}
                   onChange={handleSelectedAgentChange}
-                  className="appearance-none border border-gray-300 rounded-lg text-base px-2 py-1 pr-8 cursor-pointer font-normal focus:outline-none"
+                  className="appearance-none border border-gray-300 rounded-lg textBase px-2 py-1 pr-8 cursor-pointer font-normal focus:outline-none"
                 >
                   {selectedAgentConfigSet?.map((agent) => (
                     <option key={agent.name} value={agent.name}>
@@ -519,20 +524,6 @@ function App() {
         </div>
       </div>
 
-      <div className="flex flex-1 gap-2 px-2 overflow-hidden relative">
-        <Transcript
-          userText={userText}
-          setUserText={setUserText}
-          onSendMessage={handleSendTextMessage}
-          downloadRecording={downloadRecording}
-          canSend={
-            sessionStatus === "CONNECTED"
-          }
-        />
-
-        <Events isExpanded={isEventsPaneExpanded} />
-      </div>
-
       <BottomToolbar
         sessionStatus={sessionStatus}
         onToggleConnection={onToggleConnection}
@@ -548,8 +539,6 @@ function App() {
         codec={urlCodec}
         onCodecChange={handleCodecChange}
       />
-
-      <ShareTargetPickerButton liffObject={liffObject} />
     </div>
   );
 }

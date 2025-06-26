@@ -13,7 +13,7 @@ const ShareTargetPickerButton: React.FC<Props> = ({ liffObject }) => {
     }
     try {
       const res = await liffObject.shareTargetPicker(
-        [{ type: "text", text: "Hello, World!" }],
+        [{ type: "text", text: "便利な音声アプリ使ってみてね！ > https://miniapp.line.me/2007594476-VB9D5r5k" }],
         { isMultiple: true }
       );
       if (res) {
@@ -28,7 +28,7 @@ const ShareTargetPickerButton: React.FC<Props> = ({ liffObject }) => {
 
   return (
     <button
-      className="fixed bottom-6 right-6 bg-green-600 text-white px-4 py-2 rounded shadow-lg hover:bg-green-700 transition"
+      className="bg-green-600 text-white px-4 py-2 rounded shadow-lg hover:bg-green-700 transition"
       onClick={handleClick}
     >
       LINEでシェア
